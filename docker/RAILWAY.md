@@ -54,6 +54,7 @@ docker compose down
 
 5. **Settings → Volumes → Add Volume**
    - Mount path: `/app/server/data`
+   - Railway does not support `VOLUME` in the Dockerfile; the dashboard mount is required.
 
 6. **Settings → Networking → Generate Domain** (public URL).
 
