@@ -1,0 +1,15 @@
+# Railway config (used when deploying from this Git repo).
+# Volumes are NOT defined here — add one in the Railway dashboard:
+#   Settings → Volumes → mount path: /app/server/data
+#
+# Alternative: deploy ghcr.io/tashfeenahmed/freellmapi:latest from the Railway
+# UI without connecting GitHub (see docker/RAILWAY.md).
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/api/ping"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
