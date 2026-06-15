@@ -117,7 +117,16 @@ If you use the **same `ENCRYPTION_KEY`** and copy **`freeapi.db`** into `/app/se
 **To copy the database:**
 
 1. Deploy once with volume mounted at `/app/server/data`.
-2. Use Railway’s service shell / CLI (availability depends on plan) to place `freeapi.db` in that directory, **or** temporarily bake it into a private image (not recommended for security).
+2. Install Railway CLI: `npm install -g @railway/cli`, then `railway login` and `railway link -s "@freellmapi/server"`.
+3. Stop your local server, then run:
+   ```powershell
+   .\scripts\upload-db-to-railway.ps1
+   ```
+   Or manually:
+   ```powershell
+   railway volume files --volume "@freellmapi/server-volume" upload server\data\freeapi.db /freeapi.db --overwrite
+   railway redeploy -y
+   ```
 
 After upload, redeploy and open your Railway URL — log in with your existing credentials.
 
